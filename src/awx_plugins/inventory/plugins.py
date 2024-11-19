@@ -18,6 +18,7 @@ class PluginFileInjector:
     plugin_name = None  # Ansible core name used to reference plugin
     # base injector should be one of None, "managed", or "template"
     # this dictates which logic to borrow from playbook injectors
+    plugin_description = None  # this field holds the injector description
     base_injector = None
     # every source should have collection, these are for the collection name
     namespace = None
@@ -150,6 +151,7 @@ class PluginFileInjector:
 
 class azure_rm(PluginFileInjector):
     plugin_name = 'azure_rm'
+    plugin_description = 'Microsoft Azure Resource Manager'
     base_injector = 'managed'
     namespace = 'azure'
     collection = 'azcollection'
@@ -163,6 +165,7 @@ class azure_rm(PluginFileInjector):
 
 class ec2(PluginFileInjector):
     plugin_name = 'aws_ec2'
+    plugin_description = 'Amazon EC2'
     base_injector = 'managed'
     namespace = 'amazon'
     collection = 'aws'
@@ -176,6 +179,7 @@ class ec2(PluginFileInjector):
 
 class gce(PluginFileInjector):
     plugin_name = 'gcp_compute'
+    plugin_description = 'Google Compute Engine'
     base_injector = 'managed'
     namespace = 'google'
     collection = 'cloud'
@@ -198,6 +202,7 @@ class gce(PluginFileInjector):
 
 class vmware(PluginFileInjector):
     plugin_name = 'vmware_vm_inventory'
+    plugin_description = 'VMware vCenter'
     base_injector = 'managed'
     namespace = 'community'
     collection = 'vmware'
@@ -205,6 +210,7 @@ class vmware(PluginFileInjector):
 
 class openstack(PluginFileInjector):
     plugin_name = 'openstack'
+    plugin_description = 'OpenStack'
     namespace = 'openstack'
     collection = 'cloud'
 
@@ -264,6 +270,7 @@ class rhv(PluginFileInjector):
     """Ovirt uses the custom credential templating, and that is all."""
 
     plugin_name = 'ovirt'
+    plugin_description = 'Red Hat Virtualization'
     base_injector = 'template'
     initial_version = '2.9'
     namespace = 'ovirt'
@@ -275,6 +282,7 @@ class rhv_supported(PluginFileInjector):
     """Ovirt uses the custom credential templating, and that is all."""
 
     plugin_name = 'ovirt'
+    plugin_description = 'Supported Red Hat Virtualization'
     base_injector = 'template'
     initial_version = '2.9'
     namespace = 'redhat'
@@ -284,6 +292,7 @@ class rhv_supported(PluginFileInjector):
 
 class satellite6(PluginFileInjector):
     plugin_name = 'foreman'
+    plugin_description = 'Red Hat Satellite 6'
     namespace = 'theforeman'
     collection = 'foreman'
     use_fqcn = True
@@ -313,6 +322,7 @@ class satellite6(PluginFileInjector):
 
 class satellite6_supported(PluginFileInjector):
     plugin_name = 'foreman'
+    plugin_description = 'Supported Red Hat Satellite 6'
     namespace = 'redhat'
     collection = 'satellite'
     use_fqcn = True
@@ -342,6 +352,7 @@ class satellite6_supported(PluginFileInjector):
 
 class terraform(PluginFileInjector):
     plugin_name = 'terraform_state'
+    plugin_description = 'Terraform State'
     namespace = 'cloud'
     collection = 'terraform'
     use_fqcn = True
@@ -395,6 +406,7 @@ class controller(PluginFileInjector):
     # TODO: relying on routing for now, update after EEs pick up revised
     # collection
     plugin_name = 'tower'
+    plugin_description = 'Red Hat Ansible Automation Platform'
     base_injector = 'template'
     namespace = 'awx'
     collection = 'awx'
@@ -404,6 +416,7 @@ class controller_supported(PluginFileInjector):
     # TODO: relying on routing for now, update after EEs pick up revised
     # collection
     plugin_name = 'tower'
+    plugin_description = 'Supported Red Hat Ansible Automation Platform'
     base_injector = 'template'
     namespace = 'ansible'
     collection = 'controller'
@@ -411,6 +424,7 @@ class controller_supported(PluginFileInjector):
 
 class insights(PluginFileInjector):
     plugin_name = 'insights'
+    plugin_description = 'Red Hat Insights'
     base_injector = 'template'
     namespace = 'redhatinsights'
     collection = 'insights'
@@ -419,6 +433,7 @@ class insights(PluginFileInjector):
 
 class insights_supported(PluginFileInjector):
     plugin_name = 'insights'
+    plugin_description = 'Supported Red Hat Insights'
     base_injector = 'template'
     namespace = 'redhat'
     collection = 'insights'
@@ -427,6 +442,7 @@ class insights_supported(PluginFileInjector):
 
 class openshift_virtualization(PluginFileInjector):
     plugin_name = 'kubevirt'
+    plugin_description = 'OpenShift Virtualization'
     base_injector = 'template'
     namespace = 'kubevirt'
     collection = 'core'
@@ -435,6 +451,7 @@ class openshift_virtualization(PluginFileInjector):
 
 class openshift_virtualization_supported(PluginFileInjector):
     plugin_name = 'kubevirt'
+    plugin_description = 'Supported OpenShift Virtualization'
     base_injector = 'template'
     namespace = 'redhat'
     collection = 'openshift_virtualization'
@@ -443,6 +460,7 @@ class openshift_virtualization_supported(PluginFileInjector):
 
 class constructed(PluginFileInjector):
     plugin_name = 'constructed'
+    plugin_description = 'Template additional groups and hostvars at runtime'
     namespace = 'ansible'
     collection = 'builtin'
 
