@@ -76,6 +76,7 @@ conjur_inputs = {
 def _is_base64(s: str) -> bool:
     """Check if a given string is base64-encoded.
 
+    :param s: String to check.
     :returns: Whether the string is base64-encoded or not.
     """
     try:
