@@ -29,6 +29,10 @@ class PluginFileInjector:
     # TODO: delete this method and update unit tests
     @classmethod
     def get_proper_name(cls) -> str | None:
+        """Return an FQRN for the plugin.
+
+        :return: Plugin's fully-qualified resource name.
+        """
         if cls.plugin_name is None:
             return None
         return f'{cls.namespace}.{cls.collection}.{cls.plugin_name}'
