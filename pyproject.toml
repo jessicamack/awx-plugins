@@ -76,7 +76,7 @@ thycotic_tss = "awx_plugins.credentials.tss:tss_plugin"
 aws_secretsmanager_credential = "awx_plugins.credentials.aws_secretsmanager:aws_secretmanager_plugin"
 
 [project.entry-points."awx_plugins.inventory"]  # new entry points group name
-azure-rm = "awx_plugins.inventory.plugins:azure_rm"
+azure_rm = "awx_plugins.inventory.plugins:azure_rm"
 ec2 = "awx_plugins.inventory.plugins:ec2"
 gce = "awx_plugins.inventory.plugins:gce"
 vmware = "awx_plugins.inventory.plugins:vmware"
@@ -88,6 +88,12 @@ controller = "awx_plugins.inventory.plugins:controller"
 insights = "awx_plugins.inventory.plugins:insights"
 openshift_virtualization = "awx_plugins.inventory.plugins:openshift_virtualization"
 constructed = "awx_plugins.inventory.plugins:constructed"
+
+[project.entry-points."awx_plugins.inventory.supported"]  # new entry points group name
+satellite6 = "awx_plugins.inventory.plugins:satellite6_supported"
+controller = "awx_plugins.inventory.plugins:controller_supported"
+insights = "awx_plugins.inventory.plugins:insights_supported"
+openshift_virtualization = "awx_plugins.inventory.plugins:openshift_virtualization_supported"
 
 [project.license]
 file = "LICENSE"
